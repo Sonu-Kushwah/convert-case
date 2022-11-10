@@ -27,6 +27,19 @@ function ConvertCase() {
         let result=first+lower.slice(1);
         setText(result);
     }
+    //copy text
+    const copyText=()=>{
+       let copy=document.getElementById("text");
+       copy.select();
+       //text.setSelectionRange(0,9999);
+       navigator.clipboard.writeText(copy.value);
+    }
+    //reomove extra space
+    const handleExtraSpace=()=>{
+      console.log("first")
+      let newText=text.split(/[ ]+/);
+      setText(newText.join(" "))
+    }
   return (
     <>
      <div className='container'>
@@ -38,6 +51,8 @@ function ConvertCase() {
         <button onClick={()=>lowerCase()}>lower case</button>
         <button onClick={()=>upperCase()}>UPPER CASE</button>
         <button onClick={()=>{capital()}}>Capital Case</button>
+        <button onClick={copyText}>Copy Text</button>
+        <button onClick={handleExtraSpace}>Remove Extra Space</button> 
         <button onClick={()=>{clear()}}>Clear</button>
        </div>
       </div>
